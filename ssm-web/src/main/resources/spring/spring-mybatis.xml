@@ -3,12 +3,19 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/aop
-       http://www.springframework.org/schema/aop/spring-aop.xsd">
+       http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Service包(自动注入) -->
+    <!-- 使用Annotation自动注册Bean，解决事物失效问题：在主容器中不扫描@Controller注解，在SpringMvc中只扫描@Controller注解。  -->
+    <context:component-scan base-package="com.watchme"><!-- base-package 如果多个，用“,”分隔 -->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <!-- 配置数据源 -->
     <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
@@ -62,32 +69,32 @@
             </array>
         </property>
         <!-- 全局配置注入 -->
-        <property name="globalConfig" ref="globalConfig" />
+        <!--<property name="globalConfig" ref="globalConfig" />-->
     </bean>
-    <bean id="globalConfig" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">
-        <!--
-            AUTO->`0`("数据库ID自增")
-             INPUT->`1`(用户输入ID")
-            ID_WORKER->`2`("全局唯一ID")
-            UUID->`3`("全局唯一ID")
-        -->
-        <property name="idType" value="2" />
-        <!--
-            MYSQL->`mysql`
-            ORACLE->`oracle`
-            DB2->`db2`
-            H2->`h2`
-            HSQL->`hsql`
-            SQLITE->`sqlite`
-            POSTGRE->`postgresql`
-            SQLSERVER2005->`sqlserver2005`
-            SQLSERVER->`sqlserver`
-        -->
-        <!-- Oracle需要添加该项 -->
-        <!-- <property name="dbType" value="oracle" /> -->
-        <!-- 全局表为下划线命名设置 true -->
-        <!-- <property name="dbColumnUnderline" value="true" /> -->
-    </bean>
+    <!--<bean id="globalConfig" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">-->
+        <!--&lt;!&ndash;-->
+            <!--AUTO->`0`("数据库ID自增")-->
+             <!--INPUT->`1`(用户输入ID")-->
+            <!--ID_WORKER->`2`("全局唯一ID")-->
+            <!--UUID->`3`("全局唯一ID")-->
+        <!--&ndash;&gt;-->
+        <!--<property name="idType" value="2" />-->
+        <!--&lt;!&ndash;-->
+            <!--MYSQL->`mysql`-->
+            <!--ORACLE->`oracle`-->
+            <!--DB2->`db2`-->
+            <!--H2->`h2`-->
+            <!--HSQL->`hsql`-->
+            <!--SQLITE->`sqlite`-->
+            <!--POSTGRE->`postgresql`-->
+            <!--SQLSERVER2005->`sqlserver2005`-->
+            <!--SQLSERVER->`sqlserver`-->
+        <!--&ndash;&gt;-->
+        <!--&lt;!&ndash; Oracle需要添加该项 &ndash;&gt;-->
+        <!--&lt;!&ndash; <property name="dbType" value="oracle" /> &ndash;&gt;-->
+        <!--&lt;!&ndash; 全局表为下划线命名设置 true &ndash;&gt;-->
+        <!--&lt;!&ndash; <property name="dbColumnUnderline" value="true" /> &ndash;&gt;-->
+    <!--</bean>-->
 
     <!-- MyBatis 动态扫描  -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -99,4 +106,6 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+    <!-- 引入属性文件 -->
+    <context:property-placeholder location="classpath:db.properties"/>
 </beans>
