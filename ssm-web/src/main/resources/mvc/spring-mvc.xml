@@ -4,10 +4,20 @@
 	   xmlns:mvc="http://www.springframework.org/schema/mvc"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<mvc:default-servlet-handler/>
-
 	<!-- Controller包(自动注入) -->
-	<context:component-scan base-package="com.watchme.controller"/>
+	<!-- 自动扫描且只扫描@Controller -->
+	<context:component-scan base-package="com.watchme" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+	</context:component-scan>
+
+	<!-- 对模型视图名称的解析,即在模型视图名称添加前后缀 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+	<mvc:default-servlet-handler/>
 
 	<!-- FastJson注入 -->
 	<mvc:annotation-driven>
@@ -42,17 +52,5 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-
-	<!-- 对模型视图名称的解析,即在模型视图名称添加前后缀 -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/pages/"/>
-		<property name="suffix" value=".jsp"/>
-	</bean>
-
-	<!--&lt;!&ndash; 上传限制 &ndash;&gt;-->
-	<!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
-		<!--&lt;!&ndash; 上传文件大小限制为31M，31*1024*1024 &ndash;&gt;-->
-		<!--<property name="maxUploadSize" value="32505856"/>-->
-	<!--</bean>-->
 
 </beans>
