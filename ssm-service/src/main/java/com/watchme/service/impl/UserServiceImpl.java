@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.watchme.entity.TbUser;
 import com.watchme.mapper.UserMapper;
 import com.watchme.service.IUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +21,8 @@ import java.util.Map;
 @Transactional
 public class UserServiceImpl extends ServiceImpl<UserMapper, TbUser> implements IUserService {
 
+    private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
     public List<TbUser> qryAllUser(Map<String, Object> map) {
         Map<String,Object> columnMap = new HashMap<String,Object>();
         List<TbUser> list = baseMapper.selectByMap(columnMap);
@@ -33,7 +37,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, TbUser> implements 
     public int delUser(Map<String, Object> map) {
         int i = 0;
         String id = map.get("id").toString();
-        i = baseMapper.deleteById(id);
+        try{
+            i = baseMapper.deleteById(id);
+        }catch(Exception e){
+            e.printStackTrace();
+            logger.error("删除用户报错,错误信息："+e.getMessage());
+        }
         return i;
     }
 }
