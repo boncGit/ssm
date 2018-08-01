@@ -16,11 +16,17 @@
 
     <properties>
         <junit.version>4.12</junit.version>
+        <!-- spring -->
         <spring.version>5.0.0.RELEASE</spring.version>
+        <!-- mybaitsplus -->
         <mybaitsplus.version>2.1.9</mybaitsplus.version>
+        <!-- mysql -->
         <mysql.version>5.1.38</mysql.version>
+        <!-- 阿里巴巴数据源 -->
         <druid.version>1.1.0</druid.version>
+        <!--  json -->
         <fastjson.version>1.2.8</fastjson.version>
+        <!-- 日志 -->
         <log4j.version>1.2.17</log4j.version>
         <slf4j.version>1.7.19</slf4j.version>
         <!--  jsp相关  -->
