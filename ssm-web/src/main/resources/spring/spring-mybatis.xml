@@ -101,10 +101,13 @@
         <property name="basePackage" value="com.watchme.mapper"/>
     </bean>
 
-    <!-- 配置事务管理 -->
+    <!-- 配置事务核心管理器,封装了所有的事务操作,依赖于连接池 -->
     <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+    <!-- 开启spring对事务的注解支持(配置 Annotation 驱动，扫描@Transactional注解的类定义事务) -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
     <!-- 引入属性文件 -->
     <context:property-placeholder location="classpath:db.properties"/>
