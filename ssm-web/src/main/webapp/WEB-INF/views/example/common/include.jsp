@@ -8,9 +8,3 @@
 <!-- Bootstrap -->
 <link href="${rootPath}/static/example/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 <script src="${rootPath}/static/example/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-
-<script>
-    function toIndex() {
-        window.location.href = '${rootPath}/';
-    }
-</script>

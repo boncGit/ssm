@@ -50,4 +50,21 @@ public class UserController {
         List<Map<String,Object>> list = iUserService.selectUsersByMap(params);
         return list;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "delUser",method = RequestMethod.POST)
+    public Map<String,Object> delUser(HttpServletRequest request){
+        int i = 0;
+        Map<String,Object> result = new HashMap<String,Object>();
+        String id = request.getParameter("id");
+        Map<String,Object> params = new HashMap<String,Object>();
+        params.put("id",id);
+        i = iUserService.delUser(params);
+        if(i>0){
+            result.put("msg","删除成功");
+        }else{
+            result.put("","删除失败");
+        }
+        return result;
+    }
 }

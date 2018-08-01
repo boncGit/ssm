@@ -14,4 +14,6 @@ public interface IUserService extends IService<TbUser> {
      List<TbUser> qryAllUser(Map<String, Object> map);
 
      List<Map<String,Object>> selectUsersByMap(Map<String, Object> map);
+
+     int delUser(Map<String, Object> map);
 }

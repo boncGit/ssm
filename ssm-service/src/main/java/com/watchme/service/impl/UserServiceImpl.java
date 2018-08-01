@@ -30,4 +30,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, TbUser> implements 
         return list;
     }
 
+    public int delUser(Map<String, Object> map) {
+        int i = 0;
+        String id = map.get("id").toString();
+        i = baseMapper.deleteById(id);
+        return i;
+    }
 }

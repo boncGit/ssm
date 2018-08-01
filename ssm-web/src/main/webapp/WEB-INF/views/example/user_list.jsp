@@ -28,8 +28,8 @@
                     <c:forEach var="user" items="${userList}">
                         <tr>
                             <td>${user.id}</td>
-                            <td>${user.name}</td>
-                            <td>${user.age}</td>
+                            <td>${user.userName}</td>
+                            <td>${user.userCode}</td>
                             <td>
                                 <a href="javascript:void(0);" onclick="preSave('${user.id}')" title="编辑">
                                     <i class="glyphicon glyphicon-edit"></i>
@@ -58,16 +58,14 @@
     function del(id) {
         $.ajax({
             type: 'POST',
-            url: '${ctx}/delete',
+            url: '${ctx}/userCon/delUser',
             data: {
                 id: id
             },
             dataType: 'json',
             success: function (data) {
                 alert(data.msg);
-                if (data.success) {
-                    setTimeout('toIndex()', 100);
-                }
+                window.location.reload();
             },
             error: function () {
                 alert("出错了,请重试!");
