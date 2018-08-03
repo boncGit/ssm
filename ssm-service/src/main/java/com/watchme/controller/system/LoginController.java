@@ -22,13 +22,15 @@ import java.util.Map;
 @RequestMapping("/")
 public class LoginController {
 
-    @RequestMapping("login")
+    @RequestMapping(value = "login", method = RequestMethod.GET)
     public String home(){//自定义主界面（登陆页面）
         return "example/login";
     }
 
-    @RequestMapping(value = "staffLogin", method = RequestMethod.POST)
+    @RequestMapping(value = "login", method = RequestMethod.POST)
     public String staffLogin(HttpServletRequest request) {
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
         return null;
     }
 }
