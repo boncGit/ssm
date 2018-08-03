@@ -24,7 +24,7 @@ public class LoginController {
 
     @RequestMapping("login")
     public String home(){//自定义主界面（登陆页面）
-        return "views/example/login";
+        return "example/login";
     }
 
     @RequestMapping(value = "staffLogin", method = RequestMethod.POST)
