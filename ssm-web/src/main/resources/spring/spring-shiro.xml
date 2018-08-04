@@ -17,7 +17,7 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager" />
         <property name="loginUrl" value="/login"/>
-        <property name="successUrl" value="/success"/>
+        <property name="successUrl" value="/index"/>
         <property name="unauthorizedUrl" value="/unauthorized"/>
         <!-- 代表我们要完成shiro过滤器的具体配置 -->
         <property name="filterChainDefinitions">
