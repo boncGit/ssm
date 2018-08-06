@@ -5,4 +5,5 @@ package com.watchme.service.system;
  */
 public interface ILoginService {
 
+    boolean checkUserPositionIsExist(String userid);
 }

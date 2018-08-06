@@ -7,6 +7,7 @@
 		<id column="ID" property="id"/>
 		<result column="USER_CODE" property="userCode"/>
 		<result column="USER_NAME" property="userName"/>
+		<result column="PASSWORD" property="passWord"/>
 		<result column="MOBILE" property="mobile"/>
 		<result column="EMAIL" property="email"/>
 		<result column="CREATOR" property="creator"/>
@@ -19,6 +20,7 @@
 		SELECT t.ID as "userId",
 		t.USER_CODE as "userCode",
 		t.USER_NAME as "userName",
+		t.PASSWORD as "passWord",
 		t.MOBILE as "mobile",
 		t.EMAIL as "email"
 		from TB_USER t

@@ -3,6 +3,11 @@ package com.watchme.controller.system;
 import com.watchme.entity.TbUser;
 import com.watchme.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,15 +37,30 @@ public class LoginController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String staffLogin(HttpServletRequest request) {
-        String userName = request.getParameter("username");
-        String passWord = request.getParameter("password");
-        if (StringUtils.isBlank(userName)) {
-            request.setAttribute("errorMessage", "用户名不能为空");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        if (StringUtils.isBlank(username)) {
+            request.setAttribute("errorUserNameMessage", "用户名不能为空");
             return "example/login";
         }
-        if (StringUtils.isBlank(passWord)) {
-            request.setAttribute("errorMessage", "密码不能为空");
-            return "login";
+        if (StringUtils.isBlank(password)) {
+            request.setAttribute("errorPassWordMessage", "密码不能为空");
+            return "example/login";
+        }
+
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+
+        try{
+            subject.login(token);
+            //存入http缓存
+            HttpSession session = request.getSession();
+            Session shiroSession = subject.getSession();
+            session.setAttribute("tbUser", shiroSession.getAttribute("tbUser"));//当前用户
+        }catch (AuthenticationException e) {
+            e.printStackTrace();
+            request.setAttribute("errorMessage", "用户名或者密码不正确");
+            return "example/login";
         }
         return "redirect:/index";
     }

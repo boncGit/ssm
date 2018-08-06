@@ -37,7 +37,7 @@
                             <i class="fa fa-user"></i>
                             <input id="userName" class="form-control placeholder-no-fix" type="text" autocomplete="off"
                                    placeholder="用户名"
-                                   name="username"/><span id="userNameError">${errorMessage}</span>
+                                   name="username"/><span id="userNameError" style="color:red">${errorUserNameMessage}</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -47,7 +47,10 @@
                             <i class="fa fa-lock"></i>
                             <input id = "password" class="form-control placeholder-no-fix" type="password" autocomplete="off"
                                    placeholder="密码"
-                                   name="password"/><span id="passwordError">${errorMessage}</span>
+                                   name="password"/><span id="passwordError" style="color:red">${errorPassWordMessage}</span>
+                        </div>
+                        <div class="input-icon">
+                            <span style="color:red">${errorMessage}</span>
                         </div>
                     </div>
                     <div class="form-actions form-group">

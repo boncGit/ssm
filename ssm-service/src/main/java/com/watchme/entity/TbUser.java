@@ -36,6 +36,11 @@ public class TbUser extends Model<TbUser> {
      */
 	@TableField("USER_NAME")
 	private String userName;
+	/**
+	 * 用户名称
+	 */
+	@TableField("PASSWORD")
+	private String passWord;
     /**
      * 移动电话号码
      */
@@ -90,6 +95,14 @@ public class TbUser extends Model<TbUser> {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
 	}
 
 	public String getMobile() {
