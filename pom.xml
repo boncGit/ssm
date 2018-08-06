@@ -12,6 +12,7 @@
     <modules>
         <module>ssm-web</module>
         <module>ssm-service</module>
+        <module>ssm-gen</module>
     </modules>
 
     <properties>
@@ -21,7 +22,9 @@
         <!-- mybaitsplus -->
         <mybaitsplus.version>2.1.9</mybaitsplus.version>
         <!-- mysql -->
-        <mysql.version>5.1.38</mysql.version>
+        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
+        <!-- oracle -->
+        <oracle.version>11.2.0.4</oracle.version>
         <!-- 阿里巴巴数据源 -->
         <druid.version>1.1.0</druid.version>
         <!--  json -->
@@ -39,5 +42,11 @@
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
+
+        <velocity.version>1.7</velocity.version>
+        <guava.version>21.0</guava.version>
+        <commons-io.version>2.5</commons-io.version>
+        <commons-codec.version>1.10</commons-codec.version>
+
     </properties>
 </project>
