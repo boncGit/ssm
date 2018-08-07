@@ -27,7 +27,7 @@ public class MysqlGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("D:\\develop\\code");
+        gc.setOutputDir("/develop/code/");
         gc.setFileOverride(true);
         gc.setActiveRecord(true);// 开启 activeRecord 模式
         gc.setEnableCache(false);// XML 二级缓存
@@ -57,7 +57,7 @@ public class MysqlGenerator {
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
-        dsc.setUrl("jdbc:mysql://172.16.14.33:3306/dsp_ys?characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://localhost:3306/ssm?characterEncoding=utf8");
         mpg.setDataSource(dsc);
 
         // 策略配置
@@ -66,7 +66,7 @@ public class MysqlGenerator {
         // strategy.setDbColumnUnderline(true);//全局下划线命名
         strategy.setTablePrefix(new String[]{"bmd_", "mp_"});// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "ds_analy_log_expcheck","ds_analy_log_expcheckcontent","ds_analy_log_expcheckflow","ds_analy_log_fileprotect","ds_analy_log_sql","ds_analy_log_watermark","ds_sys_ex_log"}); // 需要生成的表
+        strategy.setInclude(new String[] { "tb_role"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 自定义实体父类
         // strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");
@@ -90,8 +90,8 @@ public class MysqlGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("logs");
-        pc.setParent("com.watchme.analysis");// 自定义包路径
+        pc.setParent("com.watchme");// 自定义包路径
+        pc.setModuleName("");
         pc.setController("controller");// 这里是控制器包名，默认 web
         mpg.setPackageInfo(pc);
 
