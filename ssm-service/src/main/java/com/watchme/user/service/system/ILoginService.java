@@ -1,4 +1,4 @@
-package com.watchme.service.system;
+package com.watchme.user.service.system;
 
 /**
  * Created by Mengxy on 2018/8/3.

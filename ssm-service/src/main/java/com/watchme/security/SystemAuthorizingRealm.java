@@ -1,9 +1,9 @@
 package com.watchme.security;
 
 import com.baomidou.mybatisplus.toolkit.CollectionUtils;
-import com.watchme.entity.TbUser;
-import com.watchme.service.IUserService;
-import com.watchme.service.system.ILoginService;
+import com.watchme.user.entity.TbUser;
+import com.watchme.user.service.IUserService;
+import com.watchme.user.service.system.ILoginService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -14,7 +14,6 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

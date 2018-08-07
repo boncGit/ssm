@@ -1,4 +1,4 @@
-package com.watchme.service.dsservice;
+package com.watchme.user.service.dsservice;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

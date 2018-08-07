@@ -1,7 +1,7 @@
-package com.watchme.mapper;
+package com.watchme.user.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.watchme.entity.TbUser;
+import com.watchme.user.entity.TbUser;
 
 import java.util.List;
 import java.util.Map;

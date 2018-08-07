@@ -1,14 +1,13 @@
-package com.watchme.service.impl;
+package com.watchme.user.service.impl;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.watchme.entity.TbUser;
-import com.watchme.mapper.UserMapper;
-import com.watchme.service.IUserService;
+import com.watchme.user.entity.TbUser;
+import com.watchme.user.mapper.UserMapper;
+import com.watchme.user.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.List;

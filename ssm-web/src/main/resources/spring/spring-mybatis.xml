@@ -17,7 +17,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!-- 配置数据源 -->
+    <!-- 配置数据源 -->\
     <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="url" value="${jdbc_url}"/>
         <property name="username" value="${jdbc_username}"/>
@@ -98,7 +98,7 @@
 
     <!-- MyBatis 动态扫描  -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.watchme.mapper"/>
+        <property name="basePackage" value="com.watchme.user.mapper"/>
     </bean>
 
     <!-- 配置事务核心管理器,封装了所有的事务操作,依赖于连接池 -->

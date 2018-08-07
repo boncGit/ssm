@@ -1,83 +1,53 @@
-package com.watchme.entity;
+package com.watchme.user.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
-
-import java.io.Serializable;
+import com.baomidou.mybatisplus.enums.IdType;
 import java.util.Date;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableName;
+import java.io.Serializable;
 
 /**
  * <p>
- * 用户表
+ * 
  * </p>
  *
- * @author Mengxy
- * @since 2018-07-26
+ * @author mengxy
+ * @since 2018-08-07
  */
 @TableName("tb_user")
 public class TbUser extends Model<TbUser> {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 编号
-     */
-    @TableId("ID")
-	private String id;
-    /**
-     * 用户编码
-     */
+	@TableId(value="ID", type= IdType.AUTO)
+	private Integer id;
 	@TableField("USER_CODE")
 	private String userCode;
-    /**
-     * 用户名称
-     */
 	@TableField("USER_NAME")
 	private String userName;
-	/**
-	 * 用户名称
-	 */
 	@TableField("PASSWORD")
-	private String passWord;
-    /**
-     * 移动电话号码
-     */
+	private String password;
 	@TableField("MOBILE")
 	private String mobile;
-    /**
-     * 邮箱
-     */
 	@TableField("EMAIL")
 	private String email;
-    /**
-     * 创建人
-     */
 	@TableField("CREATOR")
 	private String creator;
-    /**
-     * 创建时间
-     */
 	@TableField("CREATE_TIME")
 	private Date createTime;
-    /**
-     * 更新人
-     */
 	@TableField("UPDATOR")
 	private String updator;
-    /**
-     * 更新时间
-     */
 	@TableField("UPDATE_TIME")
 	private Date updateTime;
 
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -97,12 +67,12 @@ public class TbUser extends Model<TbUser> {
 		this.userName = userName;
 	}
 
-	public String getPassWord() {
-		return passWord;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getMobile() {
