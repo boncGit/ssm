@@ -3,7 +3,7 @@ package com.watchme.security;
 import com.baomidou.mybatisplus.toolkit.CollectionUtils;
 import com.watchme.user.entity.TbUser;
 import com.watchme.user.service.IUserService;
-import com.watchme.user.service.system.ILoginService;
+import com.watchme.system.service.ILoginService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;

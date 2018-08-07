@@ -1,4 +1,4 @@
-package com.watchme.user.controller.system;
+package com.watchme.system.controller;
 
 import com.watchme.user.entity.TbUser;
 import com.watchme.user.service.IUserService;

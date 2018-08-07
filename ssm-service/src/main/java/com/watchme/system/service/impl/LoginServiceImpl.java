@@ -1,6 +1,6 @@
-package com.watchme.user.service.system.impl;
+package com.watchme.system.service.impl;
 
-import com.watchme.user.service.system.ILoginService;
+import com.watchme.system.service.ILoginService;
 import org.springframework.stereotype.Service;
 
 /**
