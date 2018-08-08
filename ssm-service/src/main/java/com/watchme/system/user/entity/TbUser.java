@@ -1,4 +1,4 @@
-package com.watchme.user.entity;
+package com.watchme.system.user.entity;
 
 import com.baomidou.mybatisplus.enums.IdType;
 import java.util.Date;

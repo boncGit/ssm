@@ -1,9 +1,9 @@
-package com.watchme.user.service.impl;
+package com.watchme.system.user.service.impl;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.watchme.user.entity.TbUser;
-import com.watchme.user.mapper.UserMapper;
-import com.watchme.user.service.IUserService;
+import com.watchme.system.user.entity.TbUser;
+import com.watchme.system.user.mapper.UserMapper;
+import com.watchme.system.user.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

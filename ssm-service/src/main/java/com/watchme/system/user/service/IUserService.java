@@ -1,7 +1,7 @@
-package com.watchme.user.service;
+package com.watchme.system.user.service;
 
 import com.baomidou.mybatisplus.service.IService;
-import com.watchme.user.entity.TbUser;
+import com.watchme.system.user.entity.TbUser;
 
 import java.util.List;
 import java.util.Map;

@@ -1,9 +1,9 @@
 package com.watchme.security;
 
 import com.baomidou.mybatisplus.toolkit.CollectionUtils;
-import com.watchme.user.entity.TbUser;
-import com.watchme.user.service.IUserService;
-import com.watchme.system.service.ILoginService;
+import com.watchme.system.login.service.ILoginService;
+import com.watchme.system.user.entity.TbUser;
+import com.watchme.system.user.service.IUserService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -13,6 +13,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +31,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
     @Autowired
     private ILoginService iLoginService;
 
-   //每次验证权限的时候执行
+    //每次验证权限的时候执行
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         return null;
     }

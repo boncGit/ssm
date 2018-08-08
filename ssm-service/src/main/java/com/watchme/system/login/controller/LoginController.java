@@ -1,7 +1,5 @@
-package com.watchme.system.controller;
+package com.watchme.system.login.controller;
 
-import com.watchme.user.entity.TbUser;
-import com.watchme.user.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
