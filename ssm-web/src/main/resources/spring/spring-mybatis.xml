@@ -98,7 +98,8 @@
 
     <!-- MyBatis 动态扫描  -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.watchme.system.user.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+        <property name="basePackage" value="com.watchme.*.*.mapper"/>
     </bean>
 
     <!-- 配置事务核心管理器,封装了所有的事务操作,依赖于连接池 -->
