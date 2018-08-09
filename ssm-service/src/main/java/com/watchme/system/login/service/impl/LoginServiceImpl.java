@@ -9,12 +9,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginServiceImpl implements ILoginService{
 
+
     /**
      * 检查用户是否已经赋予了岗位权限
      * @param userid
      * @return
      */
+    @Override
     public boolean checkUserPositionIsExist(String userid) {
         return true;
     }
+
 }

@@ -22,17 +22,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, TbUser> implements 
 
     private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
+    @Override
     public List<TbUser> qryAllUser(Map<String, Object> map) {
         Map<String,Object> columnMap = new HashMap<String,Object>();
         List<TbUser> list = baseMapper.selectByMap(columnMap);
         return list;
     }
 
+    @Override
     public List<Map<String, Object>> selectUsersByMap(Map<String, Object> map) {
         List<Map<String, Object>> list = baseMapper.selectUsersByMap(map);
         return list;
     }
 
+    @Override
     public int delUser(Map<String, Object> map) {
         int i = 0;
         String id = map.get("id").toString();
