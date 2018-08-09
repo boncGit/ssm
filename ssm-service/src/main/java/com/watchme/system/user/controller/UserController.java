@@ -1,5 +1,6 @@
 package com.watchme.system.user.controller;
 
+import com.watchme.common.utils.SpringContextHolder;
 import com.watchme.system.user.entity.TbUser;
 import com.watchme.system.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +67,14 @@ public class UserController {
             result.put("","删除失败");
         }
         return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "qryUserByMap",method = RequestMethod.GET)
+    public List<TbUser> qryUserByMap(){
+        IUserService userService = SpringContextHolder.getBean("userServiceImpl");
+        Map<String,Object> params = new HashMap<String,Object>();
+        List<TbUser> list =  userService.qryAllUser(params);
+        return list;
     }
 }
