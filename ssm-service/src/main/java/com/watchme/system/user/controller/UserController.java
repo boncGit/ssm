@@ -75,6 +75,9 @@ public class UserController {
         IUserService userService = SpringContextHolder.getBean("userServiceImpl");
         Map<String,Object> params = new HashMap<String,Object>();
         List<TbUser> list =  userService.qryAllUser(params);
+        for(TbUser tbUser:list){
+            System.out.println(tbUser.getUserName());
+        }
         return list;
     }
 }
