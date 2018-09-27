@@ -8,6 +8,7 @@ import com.watchme.system.user.entity.TbUser;
 import org.aspectj.lang.JoinPoint;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,8 +42,8 @@ public class LogUtils {
      * 保存日志
      */
     public static void saveLog(HttpServletRequest request, JoinPoint joinPoint, String ex) {
-        TbUser user = new TbUser();
-//        User user = SessionUtil.getObject(request, "user");
+        HttpSession session  = request.getSession();
+        TbUser user = (TbUser) session.getAttribute("tbUser");
         if (user != null) {
             Map log = new HashMap();
             String id = UUID.randomUUID().toString().replaceAll("-", "");
@@ -54,8 +55,8 @@ public class LogUtils {
             String userAgent = request.getHeader("user-agent");
             String parms = Arrays.toString(joinPoint.getArgs());
             String e = ex;
-//            log.put("userId", user.getId());
-//            log.put("userName", user.getUserName());
+            log.put("userId", user.getId());
+            log.put("userName", user.getUserName());
             log.put("id", id);
             log.put("type", type);
             log.put("url", url);
@@ -91,11 +92,11 @@ public class LogUtils {
 
         @Override
         public void run() {
+//             保存日志信息入日志表
 //            dsRestClient.post(DsRestClient.Type.loadBalance, "http://" + systemUrl + "/sys/dsSysLog/save", log);
             String id = log.get("id").toString();
             String type = log.get("type").toString();
             String ip = log.get("ip").toString();
-            // 保存日志信息入日志表
             System.out.println("本机的ip地址为:"+ip);
         }
     }
