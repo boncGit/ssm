@@ -3,6 +3,8 @@ package com.watchme.system.user.controller;
 import com.watchme.common.utils.SpringContextHolder;
 import com.watchme.system.user.entity.TbUser;
 import com.watchme.system.user.service.IUserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import java.util.Map;
 /**
  * Created by Mengxy on 2018/7/25.
  */
+@Api(value = "API - DcTenantCommodityController", description = "商品实例信息")
 @Controller
 @RequestMapping("/userCon/")
 public class UserController {
@@ -35,6 +38,7 @@ public class UserController {
         return mav;
     }
 
+    @ApiOperation(value = "获取我的服务列表", notes = "获取我的服务列表")
     @ResponseBody
     @RequestMapping(value = "qryUsers",method = RequestMethod.GET)
     public List<TbUser> qryUsers(){
