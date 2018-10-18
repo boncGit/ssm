@@ -1,5 +1,8 @@
 package com.watchme.system.user.controller;
 
+import com.baomidou.mybatisplus.plugins.Page;
+import com.watchme.common.rest.ResponseResult;
+import com.watchme.common.rest.ResponseResultUtil;
 import com.watchme.common.utils.SpringContextHolder;
 import com.watchme.system.user.entity.TbUser;
 import com.watchme.system.user.service.IUserService;
@@ -9,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,10 +45,21 @@ public class UserController {
     @ApiOperation(value = "获取我的服务列表", notes = "获取我的服务列表")
     @ResponseBody
     @RequestMapping(value = "qryUsers",method = RequestMethod.GET)
-    public List<TbUser> qryUsers(){
+    public ResponseResult qryUsers(@RequestParam(value = "current", required = false) Integer current,
+                                 @RequestParam(value = "size", required = false) Integer size,
+                                 @RequestParam(value = "userName", required = false) String userName){
+        ResponseResult responseResult;
         Map<String,Object> params = new HashMap<String,Object>();
+        if (current == null && size == null) {
+            List<TbUser> result = iUserService.qryAllUser(params);
+            responseResult = ResponseResultUtil.getSuccessResult("查询成功", result);
+        } else {
+            Page page = new Page(current, size);
+            Page<Map<String, Object>> result = iUserService.qryAllUser(page,params);
+            responseResult = ResponseResultUtil.getSuccessResult("查询成功", result);
+        }
         List<TbUser> list = iUserService.qryAllUser(params);
-        return list;
+        return responseResult;
     }
 
     @ResponseBody

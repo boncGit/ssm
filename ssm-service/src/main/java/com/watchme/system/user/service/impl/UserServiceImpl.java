@@ -1,5 +1,6 @@
 package com.watchme.system.user.service.impl;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.watchme.system.user.entity.TbUser;
 import com.watchme.system.user.mapper.UserMapper;
@@ -27,6 +28,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, TbUser> implements 
         Map<String,Object> columnMap = new HashMap<String,Object>();
         List<TbUser> list = baseMapper.selectByMap(columnMap);
         return list;
+    }
+
+    @Override
+    public Page<Map<String, Object>> qryAllUser(Page page, Map<String, Object> map) {
+        return null;
     }
 
     @Override
