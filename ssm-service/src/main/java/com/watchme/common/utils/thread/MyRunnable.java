@@ -1,12 +1,24 @@
 package com.watchme.common.utils.thread;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by Mengxy on 2018/6/19.
  */
 public class MyRunnable implements Runnable{
+    private int count=15;
+
     @Override
     public void run() {
-        System.out.println("MyRunnable running");
+        for (int i = 0; i < 5; i++) {
+            System.out.println(Thread.currentThread().getName() + "运行  count= " + count--);
+            try {
+//                sleep((int) Math.random() * 10);
+                sleep((int) 2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -15,7 +27,7 @@ public class MyRunnable implements Runnable{
         Thread thread = new Thread(runnable,"MyRunnable1");
         thread.start();
         System.out.println(thread.getName());
-        String threadName = Thread.currentThread().getName();
-        System.out.println(threadName);
+        System.out.println(Thread.currentThread().getName());
     }
+
 }
