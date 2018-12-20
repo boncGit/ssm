@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static java.lang.Thread.sleep;
+
 public class MyNewCachedThreadPool {
 
     private static ExecutorService executorService = Executors.newCachedThreadPool();
@@ -17,17 +19,25 @@ public class MyNewCachedThreadPool {
      * 保存
      */
     public static void save(){
+        long start = System.currentTimeMillis();
         try{
+
+//            run("mengxy");
+//            run("wangqiang");
+//            run("suzg");
+
             SaveThread SaveThread1 = new SaveThread("mengxy");
             SaveThread SaveThread2 = new SaveThread("wangqiang");
             SaveThread SaveThread3 = new SaveThread("suzg");
-            executorService.submit(SaveThread1);
-            executorService.submit(SaveThread2);
-            executorService.submit(SaveThread3);
-            System.out.println(list);
+            executorService.execute(SaveThread1);
+            executorService.execute(SaveThread2);
+            executorService.execute(SaveThread3);
+
          }catch (Exception e){
             e.printStackTrace();
         }finally {
+            long end = System.currentTimeMillis();
+            System.out.println("耗时"+(end-start));
             executorService.shutdown();
         }
     }
@@ -46,12 +56,23 @@ public class MyNewCachedThreadPool {
         public void run() {
             try{
                 for(int i=0;i<10;i++){
-                    sleep( 2000);
+                    sleep( 1000);
                     System.out.println(name+i);
                 }
             }catch(Exception e){
                 e.printStackTrace();
             }
+        }
+    }
+
+    public static void run(String name) {
+        try{
+            for(int i=0;i<10;i++){
+                sleep( 2000);
+                System.out.println(name+i);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 }
