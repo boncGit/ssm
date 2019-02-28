@@ -44,7 +44,7 @@ public class UserController {
 
     @ApiOperation(value = "获取我的服务列表", notes = "获取我的服务列表")
     @ResponseBody
-    @RequestMapping(value = "qryUsers",method = RequestMethod.GET)
+    @RequestMapping(value = "qryUsers",method = RequestMethod.POST)
     public ResultEntity qryUsers(@RequestParam(value = "current", required = false) Integer current,
                                  @RequestParam(value = "size", required = false) Integer size,
                                  @RequestParam(value = "userName", required = false) String userName){
