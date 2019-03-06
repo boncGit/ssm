@@ -18,6 +18,15 @@
     <script src="${rootPath}/static/user/bootstrap-table.js"></script>
     <script src="${rootPath}/static/user/common.js"></script>
     <script src="${rootPath}/static/user/user_list.js"></script>
+
+    <script>
+        jQuery(document).ready(function () {
+//            Metronic.init(); // init metronic core components
+//            Layout.init(); // init current layout
+//            initPopupValid("problem");
+        });
+        var rootPath='${rootPath}';
+    </script>
 </head>
 <body>
 
@@ -154,13 +163,21 @@
                                     <thead>
                                             <tr>
                                                 <th data-radio="true"></th>
-                                                <th data-formatter="rowNumFormatter" data-visible="true">#</th>
-                                                <th data-field="userId" class="hidden-xs hidden-sm">登录帐号</th>
-                                                <th data-field="userName" class="col-xs-1">用户名称</th>
-                                                <th data-field="userSex" data-formatter="sexFormatter">性别</th>
-                                                <th data-field="userTel">电话</th>
-                                                <th data-field="userEmail" class="hidden-xs hidden-sm">邮箱</th>
-                                                <th data-field="createTime" class="hidden-xs hidden-sm">创建时间</th>
+                                                <%--<th data-formatter="rowNumFormatter" data-visible="true">#</th>--%>
+                                                <th data-field="userCode" class="col-xs-4">登录帐号</th>
+                                                <th data-field="userCode" class="col-xs-4">登录帐号</th>
+                                                <th data-field="userName" class="col-xs-4">用户名称</th>
+                                                <th data-field="password" class="col-xs-4">密码</th>
+                                                <th data-field="mobile" class="col-xs-4">登录帐号</th>
+                                                <th data-field="email" class="col-xs-4">用户名称</th>
+                                                <th data-field="creator" class="col-xs-4">登录帐号</th>
+                                                <th data-field="createTime" class="col-xs-4">用户名称</th>
+                                                <th data-field="updator" class="col-xs-4">登录帐号</th>
+                                                <th data-field="updateTime" class="col-xs-4">用户名称</th>
+                                                <%--<th data-field="userSex" data-formatter="sexFormatter">性别</th>--%>
+                                                <%--<th data-field="userTel">电话</th>--%>
+                                                <%--<th data-field="userEmail" class="hidden-xs hidden-sm">邮箱</th>--%>
+                                                <%--<th data-field="createTime" class="hidden-xs hidden-sm">创建时间</th>--%>
                                             </tr>
                                     </thead>
                             </table>
