@@ -14,7 +14,6 @@ function queryParams(params) {
  * 表单信息reset
  */
 function reset(){
-    alert(123);
     $('#searchForm').resetForm();
 }
 /**
@@ -23,7 +22,6 @@ function reset(){
 function search(){
     $('#table').bootstrapTable('refresh');
 }
-
 /**
  * 页面信息修改
  */
