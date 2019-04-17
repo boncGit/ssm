@@ -45,20 +45,27 @@ public class UserController {
     @ApiOperation(value = "获取我的服务列表", notes = "获取我的服务列表")
     @ResponseBody
     @RequestMapping(value = "qryUsers",method = RequestMethod.POST)
-    public ResultEntity qryUsers(@RequestParam(value = "current", required = false) Integer current,
+    public Map<String,Object> qryUsers(@RequestParam(value = "current", required = false) Integer current,
                                  @RequestParam(value = "size", required = false) Integer size,
                                  @RequestParam(value = "userName", required = false) String userName){
         ResultEntity resultEntity;
-        Map<String,Object> params = new HashMap<String,Object>();
-        if (current == null && size == null) {
-            List<TbUser> result = iUserService.qryAllUser(params);
-            resultEntity = ResultUtil.success(result);
-        } else {
+//        Map<String,Object> params = new HashMap<String,Object>();
+//        if (current == null && size == null) {
+//            List<TbUser> result = iUserService.qryAllUser(params);
+//            resultEntity = ResultUtil.success(result);
+//        } else {
             Page page = new Page(current, size);
-            Page<Map<String, Object>> result = iUserService.qryAllUser(page,params);
-            resultEntity = ResultUtil.success(result);
-        }
-        return resultEntity;
+//            Page<Map<String, Object>> result = iUserService.qryAllUser(page,params);
+//            resultEntity = ResultUtil.success(result);
+//        }
+//        return resultEntity;
+
+        Map<String,Object> params = new HashMap<String,Object>();
+        List<TbUser> list = iUserService.qryAllUser(params);
+        Map<String,Object> result = new HashMap<String,Object>();
+        result.put("total",list.size());
+        result.put("rows",list);
+        return result;
     }
 
     @ResponseBody
