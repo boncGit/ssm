@@ -248,6 +248,12 @@
             <version>2.2.2</version>
         </dependency>
         <!-- swagger end-->
-    </dependencies>
 
+        <!-- 引入redis客户端依赖 -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+    </dependencies>
 </project>
