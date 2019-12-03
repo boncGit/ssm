@@ -18,23 +18,24 @@ public class TestRedis {
      */
     public void testString() {
         try{
-//        //添加数据
+        //添加数据
         jedis.set("name", "youcong");
         System.out.println(jedis.get("name"));
-//
-//        //拼接字符串
+
+        //拼接字符串
         jedis.append("name", ".com");
         System.out.println(jedis.get("name"));
 
-//        //删除数据
+        //删除数据
         jedis.del("name");
         System.out.println(jedis.get("name"));
 
-            //设置多个键值对
+        //设置多个键值对
         jedis.mset("name","yc","age","22","qq","1933108196");
         jedis.incr("age");//加1操作
 
         System.out.println(jedis.get("name") + "-" + jedis.get("age") + "-" +jedis.get("qq"));
+
         }catch (Exception e){
             e.printStackTrace();
         }finally {
