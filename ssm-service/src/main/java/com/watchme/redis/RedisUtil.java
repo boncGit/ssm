@@ -47,7 +47,6 @@ public class RedisUtil {
 //            jedisPool = new JedisPool(config, ADDR, PORT, TIMEOUT, AUTH);//有密码连接
             jedisPool = new JedisPool(config, ADDR, PORT, TIMEOUT);//无密码连接
         } catch (Exception e) {
-
             e.printStackTrace();
         }
     }
