@@ -80,7 +80,7 @@ public class TestRedis {
         test.connectRedis();
 //        test.set("token","12345678");
         Long time = null;
-        time = test.expire("token",10);
+        time = test.expire("token",8);
         System.out.println(time);
     }
 }
